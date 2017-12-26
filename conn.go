@@ -327,17 +327,6 @@ func (c *Conn) ReadBytes(delim byte) ([]byte, error) {
 	return line, nil
 }
 
-func (c *Conn) ReadBytesWOD() ([]byte, error) {
-	var line []byte
-	for {
-		b, err := c.ReadByte()
-		if err != nil {
-			return nil, err
-		}
-		line = append(line, b)
-	}
-	return line, nil
-}
 
 // SkipBytes works like ReadBytes but skips all read data.
 func (c *Conn) SkipBytes(delim byte) error {
@@ -359,10 +348,6 @@ func (c *Conn) ReadString(delim byte) (string, error) {
 	return string(bytes), err
 }
 
-func (c *Conn) ReadStringWOD() (string, error) {
-	bytes, err := c.ReadBytesWOD()
-	return string(bytes), err
-}
 
 func (c *Conn) readUntil(read bool, delims ...string) ([]byte, int, error) {
 	if len(delims) == 0 {
