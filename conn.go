@@ -311,6 +311,11 @@ func (c *Conn) Read(buf []byte) (int, error) {
 	return n, nil
 }
 
+func (c *Conn) ReadLine() (line []byte, isPrefix bool, err error) {
+	str, prefix, err := c.r.ReadLine()
+	return
+}
+
 // ReadBytes works like bufio.ReadBytes
 func (c *Conn) ReadBytes(delim byte) ([]byte, error) {
 	var line []byte
