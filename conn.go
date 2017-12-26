@@ -311,7 +311,7 @@ func (c *Conn) Read(buf []byte) (int, error) {
 	return n, nil
 }
 
-func (c *Conn) ReadLine() (line []byte, isPrefix bool, err error) {
+func (c *Conn) ReadLine() (line []byte, err error) {
 	str, prefix, err := c.r.ReadLine()
 	return
 }
