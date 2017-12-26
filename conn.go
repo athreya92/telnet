@@ -311,9 +311,10 @@ func (c *Conn) Read(buf []byte) (int, error) {
 	return n, nil
 }
 
-func (c *Conn) ReadLine() (line []byte, err error) {
+func (c *Conn) ReadLine() (line []byte, isPrefix bool, err error) {
 	str, prefix, err := c.r.ReadLine()
-	return
+	return str, prefix, err
+
 }
 
 // ReadBytes works like bufio.ReadBytes
